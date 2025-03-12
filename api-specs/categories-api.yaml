@@ -1,0 +1,153 @@
+openapi: 3.0.0
+info:
+  title: Categories API
+  version: 1.0.0
+  description: API for managing todo categories
+
+servers:
+  - url: http://localhost:8080
+    description: Local development server
+
+paths:
+  /categories:
+    get:
+      summary: List all categories
+      operationId: listCategories
+      tags:
+        - categories
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+          description: Maximum number of categories to return
+      responses:
+        '200':
+          description: A list of categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+    post:
+      summary: Create a new category
+      operationId: createCategory
+      tags:
+        - categories
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryInput'
+      responses:
+        '201':
+          description: Category created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '400':
+          description: Invalid input
+          
+  /categories/{categoryId}:
+    get:
+      summary: Get category by ID
+      operationId: getCategoryById
+      tags:
+        - categories
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Category details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '404':
+          description: Category not found
+    put:
+      summary: Update category
+      operationId: updateCategory
+      tags:
+        - categories
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CategoryInput'
+      responses:
+        '200':
+          description: Category updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+        '404':
+          description: Category not found
+    delete:
+      summary: Delete category
+      operationId: deleteCategory
+      tags:
+        - categories
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Category deleted successfully
+        '404':
+          description: Category not found
+
+components:
+  schemas:
+    Category:
+      type: object
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        color:
+          type: string
+          pattern: "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+          example: "#FF5733"
+        createdAt:
+          type: string
+          format: date-time
+        
+    CategoryInput:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        color:
+          type: string
+          pattern: "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+          example: "#FF5733"
