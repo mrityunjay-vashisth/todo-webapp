@@ -7,7 +7,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
-	"github.com/mrityunjayvashisth/mini-api-demo/generated/categories"
+	"github.com/mrityunjay-vashisth/mini-api-demo/generated/categories"
 )
 
 // CategoryHandler implements the ServerInterface for category operations

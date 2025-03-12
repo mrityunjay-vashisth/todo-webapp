@@ -7,7 +7,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/labstack/echo/v4"
-	"github.com/mrityunjayvashisth/mini-api-demo/generated/todos"
+	"github.com/mrityunjay-vashisth/mini-api-demo/generated/todos"
 )
 
 // TodoHandler implements the ServerInterface for todo operations

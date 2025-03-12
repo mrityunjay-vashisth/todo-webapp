@@ -1,4 +1,4 @@
-module github.com/mrityunjayvashisth/mini-api-demo
+module github.com/mrityunjay-vashisth/mini-api-demo
 
 go 1.24.0
 

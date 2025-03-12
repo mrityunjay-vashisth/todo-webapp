@@ -8,9 +8,9 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-	"github.com/mrityunjayvashisth/mini-api-demo/generated/categories"
-	"github.com/mrityunjayvashisth/mini-api-demo/generated/todos"
-	"github.com/mrityunjayvashisth/mini-api-demo/handlers"
+	"github.com/mrityunjay-vashisth/mini-api-demo/generated/categories"
+	"github.com/mrityunjay-vashisth/mini-api-demo/generated/todos"
+	"github.com/mrityunjay-vashisth/mini-api-demo/handlers"
 )
 
 func main() {
